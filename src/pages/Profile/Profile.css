@@ -1,0 +1,74 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--primary-background);
+    color: var(--text-color);
+  }
+  
+  .profile-header {
+    margin-bottom: 2rem;
+  }
+  
+  .username {
+    font-weight: bold;
+  }
+  
+  .settings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    background-color: var(--secondary-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .setting-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .setting-item label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .setting-item input {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .setting-item button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-background);
+    /* color: var(--secondary-background); */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .setting-item button:hover {
+    background-color: white;
+  }
+  
+  .sign-out button {
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: #5d5150;
+    color: var(--secondary-background);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sign-out button:hover {
+    background-color: #9e7f7e;
+  }
