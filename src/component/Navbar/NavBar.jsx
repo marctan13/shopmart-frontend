@@ -26,7 +26,7 @@ function NavBar() {
   return (
       <div className="navbar">
         <div className="title">
-          <h1>Shopper</h1>
+          <h1>Shopmart</h1>
         </div>
         <div className="nav-links">
           <Link to="/">
