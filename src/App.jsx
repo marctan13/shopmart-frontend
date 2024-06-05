@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/Home";
@@ -9,10 +9,18 @@ import { ShopContextProvider } from "./contexts/ShopContext";
 import Register from "./pages/Login-Register/Register";
 import Login from "./pages/Login-Register/Login";
 import Profile from "./pages/Profile/Profile";
+import useUserStore from "./store/user-store";
 
 function App() {
+  const fetchUser = useUserStore((state) => state.fetchUser);
+  const user = useUserStore((state) => state.user);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
   return (
-    <ShopContextProvider>
+    <ShopContextProvider user={user}>
       <BrowserRouter>
         <Routes>
           {/* Routes with Layout (including Navbar) */}

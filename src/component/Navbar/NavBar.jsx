@@ -34,6 +34,11 @@ function NavBar() {
               Shop
             </span>
           </Link>
+          <Link to="/login">
+            <span className="link">
+              Login
+            </span>
+          </Link>
           <Link to="/cart">
             <span className="link">Cart</span>
             <span className="cart-count">{totalCount}</span>

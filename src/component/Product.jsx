@@ -5,7 +5,6 @@ import { useShopContext } from "../contexts/ShopContext";
 
 function Product({ product }) {
   const{addToCart, cartItems} = useShopContext();
-  // console.log(title);
   // Get the quantity of the current product in cartItems
   const cartItemAmount = cartItems[product.id] || 0;
 
