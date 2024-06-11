@@ -10,38 +10,38 @@ export function ShopContextProvider({ children, user }) {
   const [cartItems, setCartItems] = useState({});
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (user) {
-      fetchCartFromDatabase(user);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     fetchCartFromDatabase(user);
+  //   }
+  // }, [user]);
 
-  const fetchCartFromDatabase = async (user) => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/cart/${user.id}`);
-      const data = await response.json();
-      setCartItems(data.cartItems);
-    } catch (error) {
-      console.error("Failed to fetch cart", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const fetchCartFromDatabase = async (user) => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await fetch(`/api/cart/${user.id}`);
+  //     const data = await response.json();
+  //     setCartItems(data.cartItems);
+  //   } catch (error) {
+  //     console.error("Failed to fetch cart", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  const updateCartInDatabase = async () => {
-    try {
-      await fetch(`/api/cart/${user.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ cartItems }),
-      });
-    } catch (error) {
-      console.error("Failed to update cart", error);
-    }
-  };
+  // const updateCartInDatabase = async () => {
+  //   try {
+  //     await fetch(`/api/cart/${user.id}`, {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ cartItems }),
+  //     });
+  //   } catch (error) {
+  //     console.error("Failed to update cart", error);
+  //   }
+  // };
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({

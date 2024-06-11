@@ -18,17 +18,6 @@
       .link {
         padding: 2em;
       }
-  
-      .cart-count {
-        width: 22px;
-        height: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: -35px;
-        margin-left: 65px;
-        border-radius: 11px;
-        font-size: 14px;
-      }
+
     }
   }

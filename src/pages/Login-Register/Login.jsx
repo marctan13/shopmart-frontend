@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useUserStore from "../../store/user-store.js";
 
 function Login() {
   const emailRef = useRef();
@@ -7,6 +8,7 @@ function Login() {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const { login } = useUserStore(); // use the login function from the store
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,25 +25,8 @@ function Login() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/log-in", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) throw new Error("Sign in request failed");
-
-      const data = await response.json();
-      setLoading(false);
-
-      if (data.success) {
-        localStorage.setItem('jwt', data.jwt); // Store JWT in localStorage
-        navigate("/"); // Navigate to the main page or dashboard
-      } else {
-        setMessage(data.error || "Login failed");
-      }
+      await login(email, password);
+      navigate("/");
     } catch (error) {
       setLoading(false);
       setMessage("An error occurred during login");

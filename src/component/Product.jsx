@@ -1,16 +1,25 @@
-import React, {useState} from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useShopContext } from "../contexts/ShopContext";
-
+import useShopStore from "../store/cart-store";
+import useUserStore from "../store/user-store";
 
 function Product({ product }) {
-  const{addToCart, cartItems} = useShopContext();
-  // Get the quantity of the current product in cartItems
+  const { user } = useUserStore();
+  const { addToCart, cartItems } = useShopStore();
+
+  const handleAddToCart = (productId) => {
+    if (user) {
+      addToCart(productId);
+    }
+  };
+
   const cartItemAmount = cartItems[product.id] || 0;
 
-  const handleAddToCart = () => {
-      addToCart(product.id); // Pass the unique identifier as the itemId
-  };
+  // const handleRemoveFromCart = (productId) => {
+  //   if (user) {
+  //     removeFromCart(productId);
+  //   }
+  // };
 
   return (
     <div className="productCard">
@@ -25,7 +34,8 @@ function Product({ product }) {
         <Link to={`/product/${product.id}`}>
           <button>Info</button>
         </Link>
-        <button onClick={handleAddToCart}>Cart{cartItemAmount > 0 && <>({cartItemAmount})</>}</button>
+        <button onClick={() => handleAddToCart(product.id)}>Add to Cart{cartItemAmount > 0 && `(${cartItemAmount})`}</button>
+        {/* <button onClick={() => handleRemoveFromCart(product.id)}>Remove from Cart</button> */}
       </div>
     </div>
   );

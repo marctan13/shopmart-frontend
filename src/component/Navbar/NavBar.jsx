@@ -18,10 +18,6 @@ function NavBar() {
     }
   };
 
-  let totalCount = 0;
-  for (let key in cartItems) {
-    totalCount += cartItems[key];
-  }
 
   return (
       <div className="navbar">
@@ -41,7 +37,6 @@ function NavBar() {
           </Link>
           <Link to="/cart">
             <span className="link">Cart</span>
-            <span className="cart-count">{totalCount}</span>
           </Link>
           <Link to="/profile">
             <span className="link">Profile</span>
