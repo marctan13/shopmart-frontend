@@ -1,8 +1,7 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
-import { useShopContext } from "../../contexts/ShopContext";
 
 function Register() {
   const emailRef = useRef();
@@ -11,7 +10,6 @@ function Register() {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const navigate = useNavigate();
-  const { cartItems } = useShopContext();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState("");
