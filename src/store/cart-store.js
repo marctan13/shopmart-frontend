@@ -24,9 +24,39 @@ const useShopStore = create((set, get) => ({
     }
   },
 
+  // updateCartInDatabase: async (cartItems) => {
+  //   try {
+  //     const userId = useUserStore.getState().user?.userId; // Access userId from userStore
+  //     const jwt = localStorage.getItem("jwt");
+  //     const items = Object.entries(cartItems).map(([productId, quantity]) => [
+  //       userId,
+  //       productId,
+  //       quantity,
+  //     ]);
+  //     const response = await fetch(`http://localhost:3000/cart/${userId}`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${jwt}`,
+  //       },
+  //       body: JSON.stringify({ items }), // send the items array to the backend
+  //     });
+
+  //     if (response.ok) {
+  //       console.log("Cart updated successfully in database");
+  //     } else {
+  //       console.error(
+  //         "Failed to update cart in database:",
+  //         await response.text()
+  //       );
+  //     }
+  //   } catch (error) {
+  //     console.error("Failed to update cart in database:", error);
+  //   }
+  // },
   updateCartInDatabase: async (cartItems) => {
     try {
-      const userId = useUserStore.getState().user?.userId; // Access userId from userStore
+      const userId = useUserStore.getState().user?.userId;
       const jwt = localStorage.getItem("jwt");
       const items = Object.entries(cartItems).map(([productId, quantity]) => [
         userId,
@@ -41,7 +71,7 @@ const useShopStore = create((set, get) => ({
         },
         body: JSON.stringify({ items }), // send the items array to the backend
       });
-
+  
       if (response.ok) {
         console.log("Cart updated successfully in database");
       } else {
@@ -54,6 +84,7 @@ const useShopStore = create((set, get) => ({
       console.error("Failed to update cart in database:", error);
     }
   },
+  
 
   addToCart: (productId) => {
     set((state) => {
@@ -82,7 +113,7 @@ const useShopStore = create((set, get) => ({
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${jwt}`,
-        },
+        },  
       });
 
       if (response.ok) {

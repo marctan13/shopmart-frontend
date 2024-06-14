@@ -56,8 +56,6 @@ function Profile() {
     }
   };
 
-  console.log("User", user)
-
   return (
     <div className="profile">
       <div className="profile-header">
@@ -103,10 +101,11 @@ function Profile() {
         {logoutError && <p className="error-message">{logoutError}</p>}
       </div>
       <div className="setting-item">
-        <button onClick={handleDeleteAccount}>Delete Account</button>
+        <button className="delete-account" onClick={handleDeleteAccount}>Delete Account</button>
       </div>
     </div>
   );
 }
+
 
 export default Profile;

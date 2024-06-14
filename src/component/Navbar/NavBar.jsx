@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import { useShopContext } from "../../contexts/ShopContext";
-import "../../colors.css"
+import "../../colors.css";
+import useUserStore from "../../store/user-store";
 
 function NavBar() {
   const navigate = useNavigate();
-  const { cartItems } = useShopContext();
+  const { user } = useUserStore();
 
   const handleShopClick = () => {
     // Check if the current path is already '/'
@@ -18,31 +18,31 @@ function NavBar() {
     }
   };
 
-
   return (
-      <div className="navbar">
-        <div className="title">
-          <h1>Shopmart</h1>
-        </div>
-        <div className="nav-links">
-          <Link to="/">
-            <span className="link" onClick={handleShopClick}>
-              Shop
-            </span>
-          </Link>
-          <Link to="/login">
-            <span className="link">
-              Login
-            </span>
-          </Link>
-          <Link to="/cart">
-            <span className="link">Cart</span>
-          </Link>
+    <div className="navbar">
+      <div className="title">
+        <h1>Shopmart</h1>
+      </div>
+      <div className="nav-links">
+        <Link to="/">
+          <span className="link" onClick={handleShopClick}>
+            Shop
+          </span>
+        </Link>
+        <Link to="/cart">
+          <span className="link">Cart</span>
+        </Link>
+        {user ? (
           <Link to="/profile">
             <span className="link">Profile</span>
           </Link>
-        </div>
+        ) : (
+          <Link to="/login">
+            <span className="link">Sign In/Register</span>
+          </Link>
+        )}
       </div>
+    </div>
   );
 }
 

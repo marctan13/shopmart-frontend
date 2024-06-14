@@ -1,72 +1,41 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
+//Used zustand instead of Context API
 
-const ShopContext = createContext();
+// import React, { useState, useEffect, createContext, useContext } from "react";
 
-export function useShopContext() {
-  return useContext(ShopContext);
-}
+// const ShopContext = createContext();
 
-export function ShopContextProvider({ children, user }) {
-  const [cartItems, setCartItems] = useState({});
-  const [loading, setLoading] = useState(false);
+// export function useShopContext() {
+//   return useContext(ShopContext);
+// }
 
-  // useEffect(() => {
-  //   if (user) {
-  //     fetchCartFromDatabase(user);
-  //   }
-  // }, [user]);
+// export function ShopContextProvider({ children, user }) {
+//   const [cartItems, setCartItems] = useState({});
+//   const [loading, setLoading] = useState(false);
 
-  // const fetchCartFromDatabase = async (user) => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await fetch(`/api/cart/${user.id}`);
-  //     const data = await response.json();
-  //     setCartItems(data.cartItems);
-  //   } catch (error) {
-  //     console.error("Failed to fetch cart", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+//   const addToCart = (itemId) => {
+//     setCartItems((prev) => ({
+//       ...prev,
+//       [itemId]: (prev[itemId] || 0) + 1, // Check if item exists, if not default to 0
+//     }));
+//     updateCartInDatabase();
+//   };
 
-  // const updateCartInDatabase = async () => {
-  //   try {
-  //     await fetch(`/api/cart/${user.id}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ cartItems }),
-  //     });
-  //   } catch (error) {
-  //     console.error("Failed to update cart", error);
-  //   }
-  // };
+//   const removeFromCart = (itemId) => {
+//     setCartItems((prev) => ({
+//       ...prev,
+//       [itemId]: prev[itemId] > 0 ? prev[itemId] - 1 : 0 // Ensure item quantity doesn't go below 0
+//     }));
+//     updateCartInDatabase();
+//   };
 
-  const addToCart = (itemId) => {
-    setCartItems((prev) => ({
-      ...prev,
-      [itemId]: (prev[itemId] || 0) + 1, // Check if item exists, if not default to 0
-    }));
-    updateCartInDatabase();
-  };
-
-  const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({
-      ...prev,
-      [itemId]: prev[itemId] > 0 ? prev[itemId] - 1 : 0 // Ensure item quantity doesn't go below 0
-    }));
-    updateCartInDatabase();
-  };
-
-  const value = {
-    addToCart,
-    removeFromCart,
-    cartItems,
-  };
-  return (
-    <ShopContext.Provider value={value}>
-      {!loading && children}
-    </ShopContext.Provider>
-  );
-}
+//   const value = {
+//     addToCart,
+//     removeFromCart,
+//     cartItems,
+//   };
+//   return (
+//     <ShopContext.Provider value={value}>
+//       {!loading && children}
+//     </ShopContext.Provider>
+//   );
+// }

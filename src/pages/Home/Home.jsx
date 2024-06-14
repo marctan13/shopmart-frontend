@@ -24,7 +24,6 @@ function Home() {
     }
   }, [user, fetchCartFromDatabase]);
 
-  console.log("Cart Items", cartItems)
   return (
     <div className="home">
       <div className="home-container">
